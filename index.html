@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Certificate Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>E-Certificate Generator for MLSA Sessions</h1>
+
+    <!-- Form for uploading CSV and logo -->
+    <form id="certificate-form">
+        <label for="csvFile">Upload CSV file (Attendees):</label>
+        <input type="file" id="csvFile" accept=".csv"><br><br>
+
+        <label for="logoFile">Upload Chapter Logo (PNG):</label>
+        <input type="file" id="logoFile" accept="image/png"><br><br>
+
+        <label for="presenter">Enter Presenter Name:</label>
+        <input type="text" id="presenter" placeholder="Presenter Name"><br><br>
+
+        <button type="button" onclick="generateCertificates()">Generate Certificates</button>
+    </form>
+
+    <div id="output"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
