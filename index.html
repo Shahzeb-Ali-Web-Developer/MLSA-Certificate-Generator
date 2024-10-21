@@ -1,52 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        input {
-            margin: 10px 0;
-        }
-        canvas {
-            display: block;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    #canvas {
+      border: 1px solid black;
+    }
+    .inputs {
+      margin-top: 20px;
+    }
+    .inputs input, .inputs button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Certificate Generator</h1>
-        
-        <label for="template">Upload Certificate Template:</label>
-        <input type="file" id="template" accept="image/*"><br>
 
-        <label for="logo">Upload University Logo:</label>
-        <input type="file" id="logo" accept="image/*"><br>
+<div class="container">
+  <h1>Certificate Generator</h1>
+  <canvas id="canvas" width="1600" height="1131"></canvas>
+  <div class="inputs">
+    <input type="file" id="csvFile" accept=".csv" />
+    <input type="file" id="logoFile" accept="image/png, image/jpeg" />
+    <input type="text" id="sessionName" placeholder="Enter Session Name" />
+    <input type="text" id="presenterName" placeholder="Enter Presenter Name" />
+    <button onclick="generateCertificates()">Generate Certificates</button>
+  </div>
+</div>
 
-        <label for="csv">Upload CSV (with attendee names):</label>
-        <input type="file" id="csv" accept=".csv"><br>
+<script>
+  let templateImage = new Image();
+  let chapterLogo = new Image();
+  let chapterLogoLoaded = false;
 
-        <label for="sessionTitle">Session Title:</label>
-        <input type="text" id="sessionTitle" placeholder="Session Title"><br>
+  templateImage.src = "certificate_template.png"; // Background certificate template
 
-        <label for="presenterName">Presenter Name:</label>
-        <input type="text" id="presenterName" placeholder="Presenter Name"><br>
+  document.getElementById('logoFile').addEventListener('change', function(e) {
+    let file = e.target.files[0];
+    if (file) {
+      let reader = new FileReader();
+      reader.onload = function(event) {
+        chapterLogo.src = event.target.result;
+        chapterLogoLoaded = true;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
 
-        <button id="generateBtn">Generate Certificates</button>
+  function generateCertificates() {
+    let csvFile = document.getElementById('csvFile').files[0];
+    let sessionName = document.getElementById('sessionName').value;
+    let presenterName = document.getElementById('presenterName').value;
+    
+    if (csvFile && chapterLogoLoaded && sessionName && presenterName) {
+      let reader = new FileReader();
+      reader.onload = function(event) {
+        let csvData = event.target.result;
+        let attendees = parseCSV(csvData);
+        attendees.forEach(attendee => {
+          generateCertificate(attendee, sessionName, presenterName);
+        });
+      };
+      reader.readAsText(csvFile);
+    } else {
+      alert('Please upload a CSV, a logo, and fill all fields.');
+    }
+  }
 
-        <canvas id="certificateCanvas" width="1920" height="1080"></canvas>
-    </div>
+  function parseCSV(csvData) {
+    let lines = csvData.split('\n');
+    return lines.map(line => line.trim());
+  }
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script src="script.js"></script>
+  function generateCertificate(attendeeName, sessionName, presenterName) {
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    // Draw the template background
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(templateImage, 0, 0, canvas.width, canvas.height);
+
+    // Draw the chapter logo (top-right corner)
+    ctx.drawImage(chapterLogo, 1140, 110, 350, 350);
+
+    // Set font and alignment
+    ctx.fillStyle = "black";
+    ctx.font = "50px Arial";
+    ctx.textAlign = "left";
+
+    // Draw attendee name at (80px, 445px)
+    ctx.fillText(attendeeName, 80, 445);
+
+    // Draw session name at (45px, 345px)
+    ctx.font = "40px Arial";
+    ctx.fillText(sessionName, 45, 345);
+
+    // Draw presenter name below session name (adjust to 45px, 495px if needed)
+    ctx.fillText(`Event Hosted By: ${presenterName}`, 45, 495);
+  }
+
+</script>
+
 </body>
 </html>
