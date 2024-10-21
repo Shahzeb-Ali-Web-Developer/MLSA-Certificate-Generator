@@ -3,28 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Certificate Generator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Certificate Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        input {
+            margin: 10px 0;
+        }
+        canvas {
+            display: block;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>E-Certificate Generator for MLSA Sessions</h1>
+    <div class="container">
+        <h1>Certificate Generator</h1>
+        
+        <label for="template">Upload Certificate Template:</label>
+        <input type="file" id="template" accept="image/*"><br>
 
-    <!-- Form for uploading CSV and logo -->
-    <form id="certificate-form">
-        <label for="csvFile">Upload CSV file (Attendees):</label>
-        <input type="file" id="csvFile" accept=".csv"><br><br>
+        <label for="logo">Upload University Logo:</label>
+        <input type="file" id="logo" accept="image/*"><br>
 
-        <label for="logoFile">Upload Chapter Logo (PNG):</label>
-        <input type="file" id="logoFile" accept="image/png"><br><br>
+        <label for="csv">Upload CSV (with attendee names):</label>
+        <input type="file" id="csv" accept=".csv"><br>
 
-        <label for="presenter">Enter Presenter Name:</label>
-        <input type="text" id="presenter" placeholder="Presenter Name"><br><br>
+        <label for="sessionTitle">Session Title:</label>
+        <input type="text" id="sessionTitle" placeholder="Session Title"><br>
 
-        <button type="button" onclick="generateCertificates()">Generate Certificates</button>
-    </form>
+        <label for="presenterName">Presenter Name:</label>
+        <input type="text" id="presenterName" placeholder="Presenter Name"><br>
 
-    <div id="output"></div>
+        <button id="generateBtn">Generate Certificates</button>
 
-    <script src="main.js"></script>
+        <canvas id="certificateCanvas" width="1920" height="1080"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
