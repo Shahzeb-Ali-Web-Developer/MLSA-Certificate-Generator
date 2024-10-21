@@ -1,18 +1,35 @@
 body {
     font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+.certificate {
+    border: 5px solid #0078D4;
     padding: 20px;
+    background-color: #fff;
+    width: 70%;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-input {
-    margin: 10px 0;
+.attendee-name {
+    color: #0078D4; /* Set color to #0078D4 */
+    font-size: 18px; /* Set font size to 18px */
+    font-weight: bold;
 }
 
-canvas {
-    display: block;
-    margin-top: 20px;
+.session-title {
+    font-family: 'Roboto', sans-serif; /* Use Roboto Bold */
+    font-size: 13px; /* Set font size to 13px */
+    font-weight: bold; /* Make it bold */
+    color: #333; /* Adjust color as needed */
+    margin: 20px 0;
+}
+
+.presenter-name {
+    font-family: 'Roboto', sans-serif; /* Use Roboto Bold for presenter name */
+    font-size: 12px; /* Set font size to 12px */
+    font-weight: bold; /* Make it bold */
+    color: #555; /* Adjust color as needed */
 }
