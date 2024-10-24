@@ -20,20 +20,21 @@ document.getElementById('certificateForm').addEventListener('submit', function (
         // Draw the template on the canvas
         ctx.drawImage(template, 0, 0);
 
-        // Set text styles
-        ctx.font = '40px Arial';
+        // Set common text properties
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
 
-        // Add attendee name
-        ctx.fillText(attendee, canvas.width / 2, 350);
+        // Add attendee name (Position adjusted for accuracy)
+        ctx.font = '50px Arial';  // Adjust font size if needed
+        ctx.fillText(attendee, canvas.width / 2, 400);
 
         // Add session name
-        ctx.fillText(session, canvas.width / 2, 450);
+        ctx.font = '40px Arial';  // Slightly smaller font size
+        ctx.fillText(session, canvas.width / 2, 500);
 
-        // Add presenter name
+        // Add presenter name with "Presented by:" prefix
         ctx.font = '30px Arial';
-        ctx.fillText(`Presented by: ${presenter}`, canvas.width / 2, 550);
+        ctx.fillText(`Presented by: ${presenter}`, canvas.width / 2, 600);
 
         // Show the canvas and download link
         canvas.style.display = 'block';
