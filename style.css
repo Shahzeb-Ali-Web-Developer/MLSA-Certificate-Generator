@@ -1,35 +1,65 @@
 body {
+    background-color: #f0f0f5;
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
 }
 
-.certificate {
-    border: 5px solid #0078D4;
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
     padding: 20px;
     background-color: #fff;
-    width: 70%;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-.attendee-name {
-    color: #0078D4; /* Set color to #0078D4 */
-    font-size: 18px; /* Set font size to 18px */
-    font-weight: bold;
+h1 {
+    color: #333;
 }
 
-.session-title {
-    font-family: 'Roboto', sans-serif; /* Use Roboto Bold */
-    font-size: 13px; /* Set font size to 13px */
-    font-weight: bold; /* Make it bold */
-    color: #333; /* Adjust color as needed */
-    margin: 20px 0;
+form {
+    margin-bottom: 20px;
 }
 
-.presenter-name {
-    font-family: 'Roboto', sans-serif; /* Use Roboto Bold for presenter name */
-    font-size: 12px; /* Set font size to 12px */
-    font-weight: bold; /* Make it bold */
-    color: #555; /* Adjust color as needed */
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0078D4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005A9E;
+}
+
+canvas {
+    display: none;
+    margin-top: 20px;
+}
+
+#downloadLink {
+    display: none;
+    margin-top: 10px;
+    text-decoration: none;
+    background-color: #0078D4;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+#downloadLink:hover {
+    background-color: #005A9E;
 }
