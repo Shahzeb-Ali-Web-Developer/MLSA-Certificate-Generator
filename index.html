@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Import Roboto Regular and Bold -->
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <title>Certificate Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="certificate">
-        <h1>Certificate of Participation</h1>
-        <p>This certifies that</p>
-        <p class="attendee-name">[Attendee Name]</p> <!-- Attendee name -->
-        <p class="session-title">[Session Title]</p> <!-- Session title -->
-        <p>has successfully participated in the MLSA Program.</p>
-        <p class="presenter-name">Presented by: [Presenter Name]</p> <!-- Presenter name -->
-        <p>Date: [Date]</p>
+    <div class="container">
+        <h1>Certificate Generator</h1>
+        <form id="certificateForm">
+            <input type="text" id="attendee" placeholder="Attendee Name" required>
+            <input type="text" id="presenter" placeholder="Presenter Name" required>
+            <input type="text" id="session" placeholder="Session Name" required>
+            <button type="submit">Generate Certificate</button>
+        </form>
+
+        <canvas id="certificateCanvas"></canvas>
+        <a id="downloadLink" download="certificate.png">Download Certificate</a>
     </div>
-    <script src="script.js"></script> <!-- Link to external JS file -->
+
+    <script src="script.js"></script>
 </body>
 </html>
