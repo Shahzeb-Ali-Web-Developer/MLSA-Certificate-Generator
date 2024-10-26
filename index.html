@@ -3,23 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Generator</title>
+    <title>MLSA Session Certificate Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Certificate Generator</h1>
+        <h1>MLSA Session Certificate Generator</h1>
         <form id="certificateForm">
-            <input type="text" id="attendee" placeholder="Attendee Name" required>
-            <input type="text" id="presenter" placeholder="Presenter Name" required>
-            <input type="text" id="session" placeholder="Session Name" required>
-            <button type="submit">Generate Certificate</button>
+            <div class="row">
+                <div class="column">
+                    <label for="fileInput" class="file-title">Attach Attendee CSV/Excel Sheet:</label>
+                    <input type="file" id="fileInput" accept=".xlsx, .xls, .csv" required />
+                </div>
+                <div class="column">
+                    <label for="logoInput" class="file-title">Attach Chapter Logo (PNG/JPG):</label>
+                    <input type="file" id="logoInput" accept=".png, .jpg, .jpeg" required />
+                </div>
+            </div>
+            <input type="text" id="presenter" placeholder="Presenter Name" required />
+            <input type="text" id="session" placeholder="Session Name" required />
+            <button type="submit">Generate & Download Certificates</button>
         </form>
 
-        <canvas id="certificateCanvas"></canvas>
-        <a id="downloadLink" download="certificate.png">Download Certificate</a>
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>1. Upload the attendee data in CSV or Excel format (containing names only).</p>
+            <p>2. Attach a chapter logo (PNG or JPG). Max size on Certificate will be 300px.</p>
+            <p>3. Enter the presenter's name and Session title.</p>
+            <p>4. Click "Generate & Download Certificates" to download a ZIP file with all certificates.</p>
+        </div>
     </div>
 
+    <footer>
+        <p>
+            Made with 💙 by 
+            <a href="https://linkedin.com/in/shahzeb2001" target="_blank">Shahzeb Ali</a>
+        </p>
+    </footer>
+
+    <canvas id="certificateCanvas"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
