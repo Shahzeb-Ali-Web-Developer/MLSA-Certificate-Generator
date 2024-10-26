@@ -1,6 +1,6 @@
 body {
     background-color: #f0f0f5;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
@@ -17,15 +17,35 @@ body {
 }
 
 h1 {
-    color: #333;
+    color: #0386D7;
 }
 
 form {
     margin-bottom: 20px;
+    padding-right: 10px; /* Adding right padding for alignment */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-right: 10px; /* Ensure everything aligns properly on the right */
+}
+
+.column {
+    width: 48%;
+    text-align: left;
+}
+
+.file-title {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
 }
 
 input {
-    width: 80%;
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
@@ -34,15 +54,31 @@ input {
 
 button {
     padding: 10px 20px;
-    background-color: #0078D4;
+    background-color: #0386D7;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 button:hover {
     background-color: #005A9E;
+}
+
+.instructions {
+    text-align: left;
+    margin-top: 20px;
+    color: #333;
+    width: 100%; /* Full width for instructions */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px; /* Add padding for better spacing */
+}
+
+.instructions h2 {
+    color: #0386D7;
 }
 
 canvas {
@@ -50,16 +86,16 @@ canvas {
     margin-top: 20px;
 }
 
-#downloadLink {
-    display: none;
-    margin-top: 10px;
-    text-decoration: none;
-    background-color: #0078D4;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+footer {
+    margin-top: 20px;
+    color: #333;
 }
 
-#downloadLink:hover {
-    background-color: #005A9E;
+footer a {
+    color: #0386D7;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
